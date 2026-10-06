@@ -21,16 +21,6 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-2 text-sm">
               <li>
                 <a href="#" className="hover:underline text-muted-foreground">
-                  기능
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline text-muted-foreground">
-                  가격
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline text-muted-foreground">
                   보안
                 </a>
               </li>
