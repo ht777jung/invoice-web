@@ -13,6 +13,7 @@ Next.js 16, React 19, TypeScript, Tailwind CSS, shadcn/ui로 구성된 프로덕
 - **다크모드**: next-themes
 - **토스트**: Sonner
 - **아이콘**: Lucide React
+- **유틸 훅**: usehooks-ts (useMediaQuery, useLocalStorage 등)
 
 ## 프로젝트 구조
 
@@ -154,6 +155,43 @@ CMD ["npm", "start"]
 - `app/globals.css` - Tailwind + 다크모드 토큰
 - `config/site.ts` - 사이트 설정
 - `components.json` - shadcn/ui 설정
+
+## 검증된 유틸 훅 (usehooks-ts)
+
+**원칙**: 직접 훅을 구현하기 전에 [`usehooks-ts`](https://usehooks-ts.com/)를 먼저 확인하세요.
+
+### useMediaQuery - 미디어쿼리 감지
+```typescript
+import { useMediaQuery } from "usehooks-ts";
+
+// 모바일 폭 감지 (제공된 useIsMobile 래퍼)
+import { useIsMobile } from "@/hooks/use-mobile";
+const isMobile = useIsMobile(); // boolean
+
+// 또는 직접 사용
+const isDark = useMediaQuery("(prefers-color-scheme: dark)");
+const isLandscape = useMediaQuery("(orientation: landscape)");
+```
+
+### useLocalStorage - 로컬 스토리지
+```typescript
+import { useLocalStorage } from "usehooks-ts";
+
+// SSR 하이드레이션 불일치 방지: initializeWithValue: false
+const [user, setUser] = useLocalStorage("user", null, {
+  initializeWithValue: false,
+});
+
+// 값 업데이트
+setUser({ name: "John" });
+```
+
+### 기타 유용한 훅
+- `useWindowSize` - 윈도우 크기
+- `useClickAway` - 외부 클릭 감지
+- `useDebounce` - 디바운스
+- `useThrottle` - 쓰로틀
+- 더 많은 훅: https://usehooks-ts.com/
 
 ## 다음 단계
 
