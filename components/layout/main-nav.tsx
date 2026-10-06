@@ -10,6 +10,14 @@ import { navConfig } from "@/config/site";
 export function MainNav() {
   const pathname = usePathname();
 
+  // 예제 페이지(/examples/* 포함)에서 활성 표시
+  const isActive = (href: string) => {
+    if (href === "/examples") {
+      return pathname === href || pathname.startsWith("/examples/");
+    }
+    return pathname === href;
+  };
+
   return (
     <nav className="hidden gap-6 md:flex">
       {navConfig.mainNav.map((item) => (
@@ -18,7 +26,7 @@ export function MainNav() {
           href={item.href ?? "#"}
           className={cn(
             "text-sm font-medium transition-colors hover:text-foreground/80",
-            pathname === item.href
+            isActive(item.href ?? "")
               ? "text-foreground"
               : "text-foreground/60"
           )}

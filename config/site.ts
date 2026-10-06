@@ -27,6 +27,10 @@ export const navConfig = {
       href: "/",
     },
     {
+      title: "예제",
+      href: "/examples",
+    },
+    {
       title: "소개",
       href: "/about",
     },
